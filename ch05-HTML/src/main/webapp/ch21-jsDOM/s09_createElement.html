@@ -8,6 +8,14 @@
 	window.onload=function(){
 		//h1 태그 생성
 		let header = document.createElement('h1');
+		//텍스트 생성(내용)
+		let textNode = 
+			document.createTextNode('Hello DOM');
+		//노드를 연결함
+		//h1태그에 텍스트 연결
+		header.appendChild(textNode);
+		//body태그에 h1태그 연결
+		document.body.appendChild(header);
 	};
 </script>
 </head>
