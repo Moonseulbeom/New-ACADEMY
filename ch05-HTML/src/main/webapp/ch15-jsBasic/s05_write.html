@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>출력</title>
+</head>
+<body>
+<script type="text/javascript">
+	//일반 데이터로 "을 사용할 경우
+    document.write('오늘은 "수요일"<br>'); //안에 들어가면 일반문자
+    document.write("내일은 \"목요일\"<br>"); // \" 해주면 잘 들어감
+
+    //일반 데이터로 ''을 사용할 경우
+    document.write('오늘은 \'수요일\'<br>'); // \'' 해주면 잘 들어감
+    document.write("내일은 '목요일'<br>"); //" '' " 이건 자동으로 인식
+
+    //정수
+    document.write(567);
+    document.write('<br>');
+
+    //실수
+    document.write(454.343); //정수,실수 동일하게 명시
+    document.write('<br>');
+    
+    //논리값
+    document.write(true);
+    document.write('<br>');
+    document.write(false);
+
+    //브라우저 검사 항목의 콘솔에 출력
+    console.log('콘솔에 내용 출력');
+
+</script>
+</body>
+</html>
+<!-- 문법 배울때 제외하고 document.write(); 잘 안쓴다. -->

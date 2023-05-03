@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>속성(요소) 제거</title>
+</head>
+<body>
+<script type="text/javascript">
+	const student = {}; //비어있는 객체 생성
+	
+	//객체에 속성 추가
+	student.이름 = '홍길동';
+	student.학번 = '202301';
+    student.전공 = '국어국문학';
+
+	//객체에 메서드 추가(재정의)
+	student.toString = function(){
+		let msg = '';
+		for(let key in this){//this : 객체 내부에서 객체참조
+			//toString 메서드는 제외(본인)
+			if(key != 'toString'){
+				msg += key + ':' + this[key] + '<br>';
+			}
+		}
+		return msg;
+	};
+
+    //객체의 속성 출력
+    document.write(student + '<br>');
+    document.write('-----------<br>');
+
+    //속성 제거
+    delete(student.학번); //= delete student.학번 //최우선 연산자의 의미로 ()로 감싼거 둘다 상관 x //동적인 속성 없애기
+    document.write(student);
+
+    //동적으로 객체의 속성과 메서드를 관리할수 있음
+    // 1차원 배열 + 객체로 2차원 효과를 줄 수 있음
+
+
+</script>
+</body>
+</html>

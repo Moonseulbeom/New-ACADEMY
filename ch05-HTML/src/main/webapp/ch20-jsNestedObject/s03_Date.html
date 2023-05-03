@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date(시계 만들기)</title>
+<script type="text/javascript">
+	//윈도우가 로드되면 함수를 호출
+	window.onload=function(){
+		//일정 시간마다 매개변수로 전달된 함수를
+		//반복해서 실행 (무한루프)
+		window.setInterval(function(){
+			const time = new Date();
+			let hours = time.getHours();
+			let minutes = time.getMinutes();
+			let seconds = time.getSeconds();
+			
+			let clock = '';
+			clock += ((hours < 10) ? '0' : '') + hours;
+			clock += ((minutes < 10) ? ':0' : ':') + minutes;
+			clock += ((seconds < 10) ? ':0' : ':') + seconds;
+			
+			document.getElementById('display').innerHTML = clock;
+			
+		},1000);//1초단위로 실행 밀리세컨즈니까 1/1000 -> 1초
+	};
+</script>
+</head>
+<body>
+<span id="display"></span>
+</body>
+</html>
+

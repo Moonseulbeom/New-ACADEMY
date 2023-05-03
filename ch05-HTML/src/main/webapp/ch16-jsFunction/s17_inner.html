@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>지역변수의 유효범위 - 클로저</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+지역변수는 함수 레벨 스코프는 함수가 종료될 때 사라짐
+하지만, 클로저를 사용하면 이 규칙을 위반할 수 있음.
+클로저는 지역변수를 남겨두는 현상.
+*/
+	function outerFunction(name){
+		let output = 'Hello' + name + '!';
+		//내부함수를 정의하고 내부함수를 반환
+		return function(){
+			alert(output);
+		};
+	}
+	//함수 호출 (내부함수가 result(함수명)에 담김)
+	//let result = outerFunction('홍길동');
+	//result에 저장된 함수를 호출
+	//result();
+	
+	//let = m = outerFunction('홍길동');
+	//document.write(m); //내부함수를 볼수 있음
+	
+	//outerFunction함수가 반환한 내부함수를 호출
+	outerFunction('홍길동')(); //얘를 함수명으로
+	
+</script>
+</body>
+</html>

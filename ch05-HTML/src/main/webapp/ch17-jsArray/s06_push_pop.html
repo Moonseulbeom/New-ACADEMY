@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메서드를 이용한 배열의 요소 삽입/삭제</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+push() : 배열 객체의 마지막에 새 데이터를 삽입
+pop() : 배열에 저장된 데이터 중 마지막 인덱스에 저장된
+		데이터를 삭제
+shift() : 배열 객체에 저장된 데이터 중 첫 번째 인덱스
+		  에 저장된 데이터를 삭제
+unshift() : 배열 객체의 가장 앞의 인덱스에 새 데이터를 
+			삽입
+*/
+	//하나도 되고 여러개도 삽입 가능
+	let array = []; //비어있는 배열
+	array.push(10,20,30); 
+	document.write(array + '<br>');
+	
+	array.push(40);
+	document.write(array + '<br>');
+	document.write('-----------<br>');
+	
+	//배열의 "시작"에 새 값을 추가
+	array.unshift('melon');
+	document.write(array + '<br>');
+	document.write('-----------<br>');
+	
+	//(꿀팁)자바스크립트는 자료형을 명시하지 않다보니 배열에도 데이터가 할당되는 순간에 자료형이 들어감 -> 전체 배열에 자료형이 안들어감
+	array.pop();//배열의 마지막 인덱스의 데이터를 삭제
+	document.write(array + '<br>');
+	document.write('-----------<br>'); //40이 삭제됨
+	
+	array.pop();//배열의 마지막 인덱스의 데이터를 삭제
+	document.write(array + '<br>');
+	document.write('-----------<br>'); //30이 삭제됨
+	
+	//배열의 시작에서 값 하나를 제거
+	array.shift();
+	document.write(array); //melon 날아감
+	
+	
+	
+</script>
+</body>
+</html>

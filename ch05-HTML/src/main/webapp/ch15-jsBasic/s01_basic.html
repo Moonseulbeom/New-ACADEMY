@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실행 위치</title>
+<script type="text/javascript">
+    document.write('head에서 실행<br>'); /* ; 없어도 동작함(생략 가능) */
+</script>
+</head>
+<body>
+<script type="text/javascript">
+    document.write('body에서 실행<br>'); 
+</script>
+</body>
+</html>
+
+<!-- <script type="text/javascript">
+    document.write('body2에서 실행');
+</script> -->
+
+<!-- 
+<script>는 위치상관 x(원칙은 head, body나 아예 </html>밖에다 명시해도 화면에 출력)
+순서는 있음 <head>부터 실행 )
+js도 문자와 문자열 구분이 없음 '' 나 "" 상관x
+-->

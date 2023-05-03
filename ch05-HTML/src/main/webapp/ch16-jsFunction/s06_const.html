@@ -1,0 +1,28 @@
+<!DOCTYPE html> <!-- 2015년에 만들어짐 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>const</title>
+</head>
+<body>
+<script type="text/javascript">
+	const a = 10; //상수 : 변경불가
+	document.write(a + '<br>');
+	document.write('-------------<br>');
+	
+	//a=20;
+	//document.write(a + '<br>');
+	
+	function test(){
+		const b = 20; //블록 레벨 스코프
+		document.write(b + '<br>');
+	}
+	test();
+	document.write('-------------<br>');
+	//블록 레벨이기 때문에 함수 블록 밖에서 호출 불가능
+	//document.write(b);
+	//값을 바꿀경우 변수로 let, 안바꿀꺼면 const씀
+	
+</script>
+</body>
+</html>

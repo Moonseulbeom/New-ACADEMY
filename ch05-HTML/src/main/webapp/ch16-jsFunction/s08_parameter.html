@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가변인자</title>
+</head>
+<body>
+<script type="text/javascript">
+	function test(){//arguments : 일종의 []배열/ 자바는 ()빈칸이면 인식 못하는데 얘는 해줌./ 파라미터 쓰거나 arguments 써서 이용
+		for(let i=0;i<arguments.length;i++){
+			document.write('arguments['+i+']: ' + arguments[i] + '<br>'); //index 0번
+		}
+	}
+	test(10);
+	document.write('--------<br>');
+	test(10,20);
+	document.write('--------<br>');
+	test(10,20,30);
+</script>
+</body>
+</html>

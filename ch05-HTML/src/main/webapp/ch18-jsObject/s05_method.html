@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>function 키워드를 생략한 축약 표현</title>
+</head>
+<body>
+<script type="text/javascript">
+/*(let도 되는데!)
+(일반적 사용)const 키워드와 객체
+const는 새로운 값을 재할당하는 것은 불가능하지만 
+프로퍼티 동적 생성,삭제,프로퍼티 값의 변경을 통해
+객체(객체의 내용)를 변경하는 것이 가능.
+자바는 안되고, 자바스크립트 스타일
+ */
+	const obj = {
+		name:'John',
+		//메서드의 축약 표현
+		sayHi(){ //function 생략
+			document.write('Hi! ' + this.name);
+		}
+	};
+	//객체의 메서드 호출
+	obj.sayHi();
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>div</title>
+<style type="text/css">
+	div.a{
+		width:500px;
+		height:100px;
+		border:solid 1px orange;
+		/*가로 방향 정렬*/
+		text-align:center;
+		/*세로 방향 정렬 - div에서는 적용이 안된다.*/
+		vertical-align:middle;
+		/* div에서 vertical-align 속성이 적용되지
+		않기 때문에 displa:table-cell를 
+		명시해서 테이블의 cell에서 세로 방향 정렬
+		하는 것처럼 처리 */
+		display:table-cell;
+	}
+	
+	div.b{
+		width:500px;
+		height:100px;
+		border:1px solid orange;
+		display:flex;/*공간 제어*/
+		align-items:center;/*세로 방향 정렬*/
+		justify-content:center;/*가로 방향 정렬*/
+	}
+	/*둘중 하나 선택해서 쓰면 될듯*/
+</style>
+</head>
+<body>
+<div class="a">호호</div>
+<br><br>
+
+<div class="b">하하</div>
+</body>
+</html>

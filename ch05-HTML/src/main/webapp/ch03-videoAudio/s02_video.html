@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>video</title>
+</head>
+<body>
+<h3>다양한 동영상 포맷 사용 (크롬,엣지 다 형식 지원함_범용적인건 mp4 근데 용량이 큼 브라우저별로 형식 골라서 써라_아님 미디어 서버 써야된다)</h3>
+<video src="../files/river.mp4" 
+	width="320" height="240" controls></video>
+
+<video src="../files/river.webm" 
+	width="320" height="240" controls></video>
+	
+<video src="../files/river.ogv" 
+	width="320" height="240" controls></video>
+	
+<video src="../files/river.mov" 
+	width="320" height="240" controls></video>
+	
+	
+<!-- 이게 메인으로 쓰는 방법인듯 -->	
+<h3>동영상 파일을 브라우저에 호환성있게 링크하기(브라우저가 선택하게 하기_보통 하나만 불러옴(mp4))</h3>
+<video width="320" height="240" controls>
+	<source src="../files/river.mp4" 
+							type="video/mp4">
+	<source src="../files/river.webm" 
+							type="video/webm">
+	<source src="../files/river.ogv" 
+							type="video/ogg"> <!-- ogg>ogv 범위가 더 크다 -->
+	<source src="../files/river.mov"> <!-- type="video/mp4 or 타입 명시x -->
+</video>
+
+<!-- 유튜브 영상 이용법 : 공유에서 퍼가기 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uvYWAfZzb8k" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	
+</body>
+</html>
+<!-- 
+	유튜브는 iframe 형태로 지원을 해줌
+ -->

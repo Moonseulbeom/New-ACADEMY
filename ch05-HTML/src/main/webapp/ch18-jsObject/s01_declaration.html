@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체 생성</title>
+</head>
+<body>
+<script type="text/javascript">
+	//객체 생성
+	let product = {
+			//속성(key(프로퍼티):value) //식별자는 보통 영문자 + 숫자
+			제품명:'소나타',
+			제품번호:'A1001',
+			기능:'고속주행',
+			원산지:'대한민국',
+			가격:1000,
+			업데이트지원:true,//마지막 쉼표는 무시됨 //숫자나 불리언 타입에 ''넣으면 문자열로 인식함
+	};
+	
+	//객체의 속성 출력
+	document.write(product.제품명 + '<br>');
+	document.write(product.제품번호 + '<br>');
+	document.write(product.기능 + '<br>');
+	document.write(product['원산지'] + '<br>'); // .호출도 가능 []형태도 인정해줌, 문자열로 처리
+	document.write(product['가격'] + '<br>');
+	document.write(product['업데이트지원']);
+
+	
+
+	
+</script>
+</body>
+</html>

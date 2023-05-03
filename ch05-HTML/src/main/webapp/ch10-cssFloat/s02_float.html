@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>float</title>
+<style type="text/css">
+/*
+float는 태그가 세로로 배치될 때 가로로 배치될 수 있도록 처리함
+*/
+	div#a{
+		width:75%;
+		float:left;
+		background-color:pink;
+	}
+	div#b{
+		width:25%;
+		float:left;
+		background-color:skyblue; /*100% 안만들어주면 c가 침투함*/
+	}
+	div#c{
+		/*float 속성 무효화*/
+		clear:both;
+		width:100%;
+		background-color:yellow;
+	}
+</style>
+</head>
+<body>
+<div id="a">하하</div>
+<div id="b">호호</div>
+<div id="c">크크</div>
+</body>
+</html>

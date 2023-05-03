@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그명을 통해서 문서객체 탐색</title>
+<script type="text/javascript">
+    //윈도우가 로드될 때 함수 호출
+    window.onload=function(){
+        //태그명을 통해서 태그를 탐색함.
+        //검색된 태그는 배열로 반환
+        let spans = 
+        document.getElementsByTagName('span');
+
+        //태그의 내용을 읽거나 내용을 변경할 때는
+        //innerHTML 속성 사용
+        spans[0].innerHTML = '5월은 가정의 달'; //내용을 제어
+        spans[1].innerHTML = '6월도 가정의 달';
+    };
+</script>
+</head>
+<body>
+    <span>하늘</span><br> 
+    <span>하늘</span>
+</body>
+</html>

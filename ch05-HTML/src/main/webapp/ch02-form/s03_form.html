@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+</head>
+<body>
+<form action="signup.jsp" method="post">
+	<fieldset>
+		<legend>새 계정을 만듭니다.</legend>
+		<ul>
+			<li>
+				<label for="id">아이디</label>
+				<!-- autocomplete : 자동완성 
+				off는 자동완성 해제 -->
+				<input type="text" name="id"
+				id="id" autocomplete="off">
+			</li>
+			<li>
+				<label for="name">이름</label>
+				<!-- placeholder : 힌트 기능 (input안에 들어갈 내용에 대한 힌트를 줄때 사용) -->
+				<input type="text" name="name" 
+				id="name" placeholder="이름입력"
+				autocomplete="off">
+				<!-- 
+				크롬은 autocomplete off 잘되는데
+				엣지는 name="id"인것만 먹고, 나머지는 
+				자동완성 해제(autocomplete off)가 안된다. 
+				-->
+			</li>
+			<li>
+				<label for="email">이메일</label>
+				<input type="email" name="email"
+					id="email"
+					placeholder="user@example.com">
+			</li>
+			<li>
+				<label for="password">비밀번호</label>
+				<input type="password" name="password"
+				id="password" placeholder="비밀번호 입력">
+			</li>
+			<li>
+				<label for="job">직업</label>
+				<input type="text" name="job" 
+								   list="job"> <!-- input태그에서 datalist를 사용하려면 list를 넣고 datalist에 id 식별자를 넣어줘야 한다. for에도 -->
+				<datalist id="job"> <!-- 예시역할, select와 달리 강제하지 않음 -->
+					<option value="학생">
+					<option value="의사">
+					<option value="변호사">
+					<option value="프로그래머">
+				</datalist>
+			</li>
+			<li>
+				<input type="submit" value="회원가입">
+			</li>
+		</ul>
+	</fieldset>
+</form>
+</body>
+</html>

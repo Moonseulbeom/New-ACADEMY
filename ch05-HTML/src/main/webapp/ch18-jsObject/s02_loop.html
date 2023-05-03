@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반복문을 이용해서 객체의 속성 읽기</title>
+</head>
+<body>
+<script type="text/javascript">
+	//객체 생성
+	let product = {
+			name:'eclipse',
+			price:'10,000원',
+			language:'한국어',
+			supportOS:'win10',
+			subscription:true
+	};
+	//for in 반복문을 사용해서 객체의 속성 읽기(접근)
+	//for in 반복문에서 "객체에 접근해서 key를
+	//문자열로 반환받음." 변수에 반환받은 key
+	//활용해서 객체[변수] 형식으로 객체에 속성에
+	//접근하여 값을 읽어 올 수 있음(자바는 없다) //.key는 안된다.
+	for(let key in product){//key 문자열 형태로 반환 'name', 'price'
+		document.write(
+				key + ':' + product[key] + '<br>');
+	}
+</script>
+</body>
+</html>

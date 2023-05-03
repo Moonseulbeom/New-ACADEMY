@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지</title>
+</head>
+<body>
+<h3>같은 경로의 이미지 표시</h3> <!-- 파일 이름만 -->
+<img src="winter.jpg" width="200" height="150">
+<!-- 기본사진크기 800*600 -->
+
+<h3>다른 경로의 이미지 표시</h3> <!-- 상위 폴더는 .. -->
+<img src="../files/landscape.jpg" width="200" height="150">
+<!-- 기본사진크기 632*474 -->
+<!-- 작게 쓸꺼면 포토샵이던 써서 줄여쓰자, 용량 잡아먹는다 -->
+
+<h3>이미지에 링크 걸기</h3>
+<a href="https://www.naver.com">
+	<img src="../files/landscape.jpg" 
+		width="100" height="100"></a>
+
+<h3>figure, figcation 태그 : 이미지에 설명 글 붙이기</h3>	
+<figure> <!-- 자동으로 들여씀 -->
+	<img src="winter.jpg" alt="겨울" 
+		width="100" height="100"> <!-- alt : ex)시각장애인 낭독기 프로그램에서 alt값 읽어줌  -->
+	<figcaption>겨울 이미지(Winter Image)</figcaption>
+</figure>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>박스 모델</title>
+<style type="text/css">
+/*
+태그 밖 여백
+margin:속성값 4 -> 상 우 하 좌 (시계방향)
+			 3 -> 상 좌우 하
+			 2 -> 상하 좌우
+			 1 -> 상하좌우
+태그 안 여백
+padding:속성값 4 -> 상 우 하 좌
+			  3 -> 상 좌우 하
+			  2 -> 상하 좌우
+			  1 ->  상하좌우
+테두리(border)
+테두리의 스타일 지정
+border-style: 속성값
+			  dotted 점
+			  dashed 점선
+			  solid 실선 (가장 많이 씀)
+			  double 두 줄
+			  groove 테두리를 오른쪽 아래에서 빛을 받은 스타일로 지정(입체감 있게)
+			  ridge 테두리를 왼쪽 위에서 빛을 받은 스타일로 지정
+			  outset 테두리를 밖으로 나온 스타일로 지정
+			  inset 테두리를 안으로 파인 스타일로 지정
+			  
+굵기 지정
+border-width:속성값
+			 thin,medium,thick
+색상 지정
+border-color
+
+방향별로 테두리 지정
+border-top-
+border-right-
+border-bottom-
+border-left-
+
+일괄지정 border
+border:style width color
+*/	/* ul태그는 블럭레벨 */
+	ul{
+		list-style:none; /*리스트의 점 제거*/
+		background-color:green;
+		/* 태그 밖 여백 */
+			 /* 상   우   하   좌 */
+		margin:10px 5px 15px 10px;
+		/* 태그 안 여백 */
+		padding:10px; /*상하좌우*/
+	}
+	
+	li{
+		color:red; /*글자의 색깔*/
+		background-color:yellow; /*배경색*/
+		margin:10px;
+		padding:10px;
+	}
+	
+	li.withborder{
+		border-style:dashed; /*점선*/
+		border-width:medium; /*두께를 중간으로 설정*/
+		border-color:black; /*테두리 색깔*/
+		
+	}
+/* 
+ul태그의 장점 : 변형이 자유롭다. 
+어차피 점 없애서 ol태그를 잘 안쓴다.
+*/
+</style>
+</head>
+<body>
+<ul>
+	<li>테두리가 없는 곳</li>
+	<li class="withborder">테두리가 있는 곳</li>
+</ul>
+</body>
+</html>

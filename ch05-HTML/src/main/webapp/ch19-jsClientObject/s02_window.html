@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window의 open,close 메서드</title>
+<script type="text/javascript">
+/*
+window.open(url,새창이름,옵션) : 새창 열기
+(옵션 값)
+width : 새 윈도우의 넓이
+height : 새 윈도우의 높이
+location : 주소 입력창 유무 //브라우저 정책상 어쩔수 없다.(크롬,엣지는 보여줌)
+menubar : 메뉴의 유무
+resizable : 화면 크기 조절 가능 여부 //안에 내용이 많으면 자동 조절로 바뀜
+status : 상태 표시줄의 유무
+toolbar : 툴바 유무
+scrollbars : 스크롤바 유무
+left : 창의 가로축 위치 지정
+top : 창의 세로축 위치 지정
+
+window.close() : 창 닫기
+ */
+    //열려있는 창 정보 저장(객체로 인식)
+    let win;
+
+    function winOpen(){//창 열기
+        win = window.open(
+                'https://www.naver.com','child','toolbar=no,location=no,status=no,menubar=no,resizable=no,scrollbars=no,width=400,height=300'); 
+                //옵션은 다 문자열로, 내용이 많아서 resizable이나 기타 기능이 기본값으로 처리해버림
+    }
+    function winClose(){//창 닫기
+        win.close(); //열려있는 창 닫기
+    }
+</script>
+</head>
+<body>
+
+<input type="button" value="창 열기"
+        onclick="winOpen()">
+
+<input type="button" value="창 닫기"
+        onclick="winClose()">
+
+</body>
+</html>

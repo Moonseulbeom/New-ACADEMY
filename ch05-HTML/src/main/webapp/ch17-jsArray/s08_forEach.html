@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>forEach</title>
+</head>
+<body>
+<script type="text/javascript">
+	//배열 생성
+	let array = [10,20,30,40,50,60,70,80,90,100];
+	//배열의 요소를 누적시킬 변수
+	let sum = 0;
+	array.forEach(function(element,index,array){
+		//element : 배열의 요소
+		//index : 배열의 인덱스
+		//array : 배열 자체
+		//forEach가 주체로서 데이터를 넣는다 공급
+		sum += element; //누적
+		document.write(index + ':' + element 
+					+ '->' + sum + '<br>');
+		//배열 요소 목록 출력
+		document.write(array + '<br>');
+	});
+//반복문 or forEach 취사선택
+	
+</script>
+</body>
+</html>
