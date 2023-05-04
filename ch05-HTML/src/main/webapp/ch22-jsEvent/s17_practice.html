@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습</title>
+<script type="text/javascript">
+/*
+[실습]
+국어,영어,수학을 입력 받아서 총점, 평균을 구하여 출력.
+출력은 alert()를 이용함. 출력은 국어,영어,수학,총점,평균
+평균은 소수점 둘째자리까지 출력
+유효성 검사 : 국어,영어,수학은 값을 꼭 입력,
+			입력 값은 숫자, 0부터 100까지 입력 가능
+s14기준으로 만들어랑
+ */
+	// 윈도우가 로드될 때 이벤트 핸들러를 호출
+	window.onload=function(){
+        let confirm_btn = document.getElementById('confirm_btn');
+
+		// 이벤트 연결
+		confirm_btn.onclick=function(){
+			let korean = document.getElementById('korean');
+			if(!check(korean,'국어')){//정확한 값이 아닐 경우 반환되게
+				return;
+			}
+
+			let english = document.getElementById('english');
+			if(!check(english,'영어')){//정확한 값이 아닐 경우 반환되게
+				return;
+			}
+
+			let math = document.getElementById('math');
+			if(!check(math,'수학')){//정확한 값이 아닐 경우 반환되게
+				return;
+			}
+
+			//총점 구하기
+			let sum = Number(korean.value) +
+						Number(english.value) +
+						Number(math.value);
+
+			//평균 구하기
+			let avg = sum/3;
+
+			let msg = '';
+			msg += '국어 : ' + korean.value + '\n';
+			msg += '영어 : ' + english.value + '\n';
+			msg += '수학 : ' + math.value + '\n';
+			msg += '총점 : ' + sum + '\n';
+			msg += '평균 : ' + avg.toFixed(2);
+
+			alert(msg);
+		
+		};
+
+		//(함수)유효성 체크용 함수(9개 체크 많고 반복, 함수를 만들자_코드 절약)
+		function check(course,name){
+			if(course.value.trim()==''){
+				alert(name + '성적을 입력하세요!');
+				course.value = ''; //공백 지우기
+				course.focus();
+				return false;
+			}
+			//문자인지 숫자인지 체크
+			if(isNaN(course.value)){
+				alert(name + ' 성적은 숫자만 가능');
+				course.value = '';
+				course.focus();
+				return false;
+			}
+			if(course.value < 0 || course.value > 100){
+				alert('0부터 100까지만 입력 가능');
+				course.value = ''; //잘못된 값 지워버리기
+				course.focus();
+				return false;
+			}
+
+			return true;
+		}
+
+	};
+
+</script>
+</head>
+<body>
+<form>
+	국어 <input type="text" name="korean" id="korean"><br>
+	영어 <input type="text" name="korean" id="english"><br>
+	수학 <input type="text" name="korean" id="math"><br>
+	<input type="button" value="확인" id="confirm_btn">
+
+</form>
+</body>
+</html>
+<!-- 정상적이지 않은 데이터를 걸러내는과정 -->
