@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서객체의 스타일 처리</title>
+<script type="text/javascript">
+	//윈도우가 로드될 때 함수를 호출
+	window.onload=function(){
+		let header = 
+			document.getElementById('header');
+		/*
+		css background-color 속성은 자바스크립트
+		에서는 backgroundColor로 명시해야 함.
+		자바스크립트에서 식별자에 '-'을 사용할 수 없음.
+		*/
+		//문서객체의 스타일 처리
+		header.style.border = '2px solid black';
+		header.style.color = 'orange';
+		header.style.fontFamily = 'Helvetica';
+		header.style.backgroundColor = 'yellow';
+	};
+</script>
+</head>
+<body>
+	<h1 id="header">header</h1>
+</body>
+</html>
