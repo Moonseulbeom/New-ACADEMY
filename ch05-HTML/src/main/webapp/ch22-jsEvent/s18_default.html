@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>기본 이벤트</title>
+<script type="text/javascript">
+	//윈도우가 로드될 때 이벤트 핸들러를 호출 (이벤트 수정)
+    window.onload=function(){
+        //id 연결
+        let alink = 
+            document.getElementById('alink');
+        //이벤트 연결
+        alink.onclick=function(){
+            alert('이벤트 연결');
+
+            //기본 이벤트 제거
+            return false;
+        };
+
+        //id 연결
+        let myForm = 
+            document.getElementById('myForm');
+        //이벤트 연결
+        myForm.onsubmit=function(){
+            let name = document.getElementById('name');
+            alert(name.value);
+
+            //기본 이벤트 제거
+            return false;
+        };
+
+
+    };
+</script>
+</head>
+<body>
+<!-- 
+기본이벤트 : a태그, form 태그 
+별도의 이벤트 연결이 필요없음 (2개뿐) 
+변형시에는 이벤트가 필요
+이벤트 전달, 전파가 중
+-->
+
+<!-- 클릭하면 자동으로 이동하게끔 이벤트가 들어가있음 -->
+<a id="alink" href="https://www.naver.com">이동</a>
+<!-- action은 전송처 : 서버? -->
+
+<form id="myForm" action="a.jsp" method="post">
+    이름 <input type="text" name="name" id="name">
+    <input type="submit" value="전송">
+</form>
+</body>
+</html>
