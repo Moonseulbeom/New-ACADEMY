@@ -1,0 +1,54 @@
+<!DOCTYPE html> <!-- 전화번호 or 계좌번호도 사용가능할듯 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규표현식</title>
+<script type="text/javascript">
+    //윈도우가 로드될 때 
+    window.onload=function(){
+        let form = document.getElementById('register_form');
+
+        //이벤트 연결
+        form.onsubmit=function(){
+            //유효성 체크
+            let phone = document.getElementById('phone');
+            /*
+            /패턴/ -> /(시작) 패턴 /(끝)
+            ^ 패턴의 시작
+            [] '[' 와 ']'사이의 문자들과 매치라는 의미 (다 or의 개념으로 의미)
+            [] 안의 문자 사이에 하이픈(-)을 사용하게 되면
+            두 문자 사이의 범위(From - To)를 의미
+            [0-9] -> [0123456789]와 같은 의미 (다 or , and 개념이 아님)
+            {11} 11번 반복 (11개 나와야함)
+            $ 패턴의 끝
+
+            match(패턴) : 패턴과 일치하면 검색 데이터 반환,
+                          불일치 null 반환 
+                          (java는 true/false, javascript는 데이터 있으면 true 없으면 false로 인식)
+                          test() 보다 느림 (그래서 match보단 test를 더 많이 씀)
+            */
+           if(!phone.value.match(/^[0-9]{11}$/)){
+                alert('11자리 숫자만 입력 가능');
+                phone.value='';
+                phone.focus();
+                return false; //submit(정보처리) 안되게 하려면
+           }
+        };
+    };
+</script>
+</head>
+<body>
+<h3>정규표현식</h3>
+<form id="register_form" action="a.jsp" method="post">
+	<ul>
+		<li>
+			<label>전화번호</label>
+            <input type="text" name="phone" id="phone">(-없이 입력)
+		</li>
+	</ul>
+    <div>
+        <input type="submit" value="전송">
+    </div>
+</form>
+</body>
+</html>
