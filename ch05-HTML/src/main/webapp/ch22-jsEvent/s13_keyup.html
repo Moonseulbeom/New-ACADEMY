@@ -20,7 +20,7 @@ keyup		키보드가 떼어질 때 발생		3	//한글의 경우 keyup을 씀, 영
 		document.getElementById(
 		'content').onkeyup=function(){//이벤트 핸들러
 			//입력한 글자 수
-			let inputLength = this.value.length; //this -> 이벤트 발생한 태그
+			let inputLength = this.value.length; //this -> 핸들러 안에서 이벤트 발생한 태그
 			//남은 글자수
 			let remain = 150 - inputLength;
 			//문서객체에 반영
