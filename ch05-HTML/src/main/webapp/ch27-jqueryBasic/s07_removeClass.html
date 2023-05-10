@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!-- 데이터를 다르게 세팅할 떄 이게 표준 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<style type="text/css">
+	.item{color:red;}
+	.select{background:yellow;}
+</style>
+<script type="text/javascript" 
+	src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//3초 후에 매개변수로 전달된 함수를 실행
+		setTimeout(function(){
+			//문서 객체의 클래스 속성을 제거
+			$('h1').removeClass('select');
+		},3000);
+		
+		
+	});
+</script>
+</head>
+<body>
+	<h1 class="item">Header - 0</h1>
+	<h1 class="item select">Header - 1</h1>
+	<h1 class="item">Header - 2</h1>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<script type="text/javascript" 
+	src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//하나의 속성 제어
+		/*
+		$('img').attr('width',function(index){//높이는 비율로 조정
+			return (index+1)*100;
+		})
+		*/
+		
+		//두개의 속성 제어(복수의 태그_객체형태)
+		$('img').attr({
+			width:function(index){
+				return (index + 1) * 100;
+			},
+			height:function(index){
+				return (index + 1) * 100;
+			},
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<img src="../files/blue.jpg">
+	<img src="../files/flower.jpg">
+	<img src="../files/winter.jpg">
+</body>
+</html>
