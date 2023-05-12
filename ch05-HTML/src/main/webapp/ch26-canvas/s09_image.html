@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- 이미지 변형 -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Canvas</title>
 <script type="text/javascript">
 	window.onload=function(){
-		let canvas = document.getElementById('canvas');
+		let canvas = 
+			document.getElementById('canvas');
 		if(canvas.getContext){
 			let context = canvas.getContext('2d');
 			
@@ -14,10 +14,10 @@
 			img.src = '../files/landscape.jpg';
 			
 			img.onload=function(){
-								//Image객체,x,y
+				                //Image객체,x,y
 				context.drawImage(img,10,10);
-								//Image객체,x,y,width,height
-				context.drawImage(img,10,500,200,100);
+				                //Image객체,x,y,width,height
+				context.drawImage(img,10,500,200,100);                
 			};
 		}else{
 			alert('브라우저가 캔버스를 지원하지 않습니다.');
@@ -27,6 +27,11 @@
 </head>
 <body>
 	<canvas id="canvas" width="800"
-				height="400"></canvas>
+	           height="700"></canvas>     
 </body>
 </html>
+
+
+
+
+
