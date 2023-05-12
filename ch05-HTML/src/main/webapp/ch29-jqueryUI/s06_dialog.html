@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery UI</title>
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#dialog').dialog({
+			autoOpen:false, //수동으로 다이얼로그 열기
+			show:{
+				effect:'blind',
+				duration:1000
+			},
+			hide:{
+				effect:'explode',
+				duration:1000
+			}
+		});//end of dialog
+		
+		//이벤트 연결
+		$('#opener').click(function(){
+			//다이얼로그 표시
+			$('#dialog').dialog('open');
+		});
+		
+	});
+</script>
+</head>
+<body>
+<div id="dialog" title="Basic dialog">
+	<p>여기는 대한민국의 수도 서울의 심장부인 
+	   강남의 역삼역 근처 한독 빌딩의 강의실입니다.</p>
+</div>	
+
+<button id="opener">Open Dialog</button>
+
+</body>
+</html>
+
+
+
+

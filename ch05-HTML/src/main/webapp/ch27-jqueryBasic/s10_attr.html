@@ -7,7 +7,7 @@
 	src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//3초 후에 img 태그에 명시된 url 읽기
+		//3초 후에 img 태그에 명시된 url 읽기 : get/set 별도로 메서드 안만들고 한번에
 		setTimeout(function(){
 			//속성 값 반환
 			alert($('img').attr('src'));
