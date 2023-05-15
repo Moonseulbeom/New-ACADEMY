@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //일반 클래스에 HttpServlet를 상속하면 Servlet이
-//되고 HTML를 생성해서 클라이언트로 전송할 수 있음 (request,response 두개의 객체는 클라이언트가 요청하면 컨테이너가 생성해줌_상속 받아야함)
+//되고 HTML를 생성해서 클라이언트로 전송할 수 있음 (request,response 두개의 객체는 클라이언트가 요청하면 컨테이너가(감지) 생성해줌_상속 받아야함)
 @WebServlet("/helloServlet")// /가 앞에 있는 주소 모두 생략
 public class HelloServlet extends HttpServlet{
 	@Override

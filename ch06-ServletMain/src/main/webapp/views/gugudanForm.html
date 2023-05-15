@@ -1,0 +1,17 @@
+<!DOCTYPE html><!-- html과 서블릿의 경로가 다름, html에서 실행-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 입력</title>
+</head>
+<body>
+<h1>구구단의 단 입력</h1> <!-- /(경로입력)콘텍스트 루트(제일 상위폴더)	/ 서블릿명(주소) -->
+<form action="/ch06-ServletMain/gugudan"
+							method="get"> <!-- get 방식 : name 값 전달 (request에 담긴다.) -->
+	단 <input type="number" name="dan"
+					min="2" max="9"><br>
+	<input type="submit" value="전송">
+
+</form>
+</body>
+</html>
