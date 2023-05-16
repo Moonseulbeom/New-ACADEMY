@@ -1,4 +1,4 @@
-package kr.web.ch03; //서블릿의 동작방식
+package kr.web.ch03; //서블릿의 동작방식 - UI 처리가 어려움(동적 페이지 생성을 위해 JSP를 만듦)
 
 import java.io.IOException;
 import java.io.PrintWriter;

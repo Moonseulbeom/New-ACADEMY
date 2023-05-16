@@ -6,53 +6,55 @@
 <script type="text/javascript">
 	window.onload=function(){
 		let myForm = 
-			documentl.getElementById('myForm');
+			document.getElementById('myForm');
 		//이벤트 연결
 		myForm.onsubmit=function(){
-			let name =
+			let name = 
 				document.getElementById('name');
-			if(name.value.trim()==''){
-				alert('이릅을 입력하세요!');
+			if(name.value.trim()==''){//앞 뒤 공백 체크
+				alert('이름을 입력하세요!');
 				name.value='';//공백만 입력시 공백을 지움
 				name.focus();
 				return false;
 			}
-			
 			let cities = 
-				document.getElementsByClassName('cb-city');
+				document.getElementsByClassName(
+						                   'cb-city');
 			let num = 0;
 			for(let i=0;i<cities.length;i++){
 				if(cities[i].checked){
-					num++; //체크 하면 1 증가 시킴
+					num++;//체크하면 1 증가 시킴
 				}
 			}
 			
 			if(num<2){
 				alert('여행지는 2개 이상 선택해야 합니다.');
-				return false;
+				return false;//submit 안되게
 			}
 			
 		};
-		
 	};
 </script>
 </head>
 <body>
-	<h3>여행지를 선택하세요! (2개이상 선택)</h3>
+	<h3>여행지를 선택하세요!(2개이상 선택)</h3>
 	<form id="myForm" method="post"
-		action="/ch06-ServletMain/travel">
+	     action="/ch06-ServletMain/travel">
 		이름 : <input type="text" name="name"
-							id="name"><br>
+		                     id="name"><br>
 		여행지 선택<br>
 		<input type="checkbox" name="city"
-			value="서울" class="cb-city">서울
+		         value="서울" class="cb-city">서울
 		<input type="checkbox" name="city"
-			value="뉴욕" class="cb-city">뉴욕
+		         value="뉴욕" class="cb-city">뉴욕
 		<input type="checkbox" name="city"
-			value="런던" class="cb-city">런던
+		         value="런던" class="cb-city">런던
 		<input type="checkbox" name="city"
-			value="파리" class="cb-city">파리
-		<input type="submit" value="전송">
+		         value="파리" class="cb-city">파리
+		<input type="submit" value="전송">                                   
 	</form>
 </body>
 </html>
+
+
+

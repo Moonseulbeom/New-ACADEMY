@@ -34,7 +34,7 @@ public class AddServlet extends HttpServlet {
 	    response.setContentType("text/html;charset=utf-8");
 	    
 	    //HTML 출력을 위한 스트림 생성
-	    PrintWriter out = response.getWriter();
+	    PrintWriter out = response.getWriter(); //print, println, printf 다 사용가능
 	    out.println("<html>");
 	    out.println("<head><title>덧셈 프로그램</title></head>");
 	    out.printf("%d + %d = %d",num1,num2,num1+num2);

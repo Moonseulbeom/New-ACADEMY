@@ -17,7 +17,7 @@ public class GugudanServlet extends HttpServlet{
 		   HttpServletResponse response) 
 		   throws ServletException, IOException{
       //클라이언트에서 전송한 데이터를 반환
-            //String -> int 변환
+            //String -> int 변환 (연산하기 위해)
       int dan = Integer.parseInt(
     		  request.getParameter("dan"));
       
