@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.HashMap"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +17,18 @@
 배송비 :
 총 구매비용(배송비 포함) : 
 --%>
-
 <%
 	//전송된 데이터 인코딩 처리
 	request.setCharacterEncoding("utf-8");
+
+	//가격 정보
+	HashMap<String,Integer> map = new HashMap<String,Integer>();
+	map.put("가방",200000);
+	map.put("신발",100000);
+	map.put("옷",50000);
+	map.put("식사권",150000);
+	//배송비
+	int delivery_fee = 5000;
 %>
 이름 : <%= request.getParameter("name") %><br>
 배송희망일 : <%= request.getParameter("order_date") %><br>
@@ -27,19 +36,26 @@
 <%
 	String[] items = 
 		request.getParameterValues("item");
-	
-	if(items!=null){//null 체크
+	int sum = 0;
+	if(items!=null){//null 체크_자바스크립트가 가끔 꺼져있을수도 있어서 넣어주는게 좋다!
 		for(int i=0;i<items.length;i++){
+			sum += map.get(items[i]);
 			if(i>0) out.print(",");
+%>			
+		<%= items[i] %>
+<%
+		}//end of for
+		
+		//배송비 포함 여부 체크
+		if(sum<300000) sum += delivery_fee;
+		else delivery_fee = 0;
 %>
-			<%= items[i] %>
-<%	
-		}
-		out.println("<br>");
+	<br>
+	배송비 : <%= String.format("%,d원", delivery_fee) %><br>
+	총매비용(배송비 포함) : <%= String.format("%,d원", sum) %>
+	<%--문자열 가공 String.format == sysout.printf 랑 같은거 --%>
+<%				
 	}
-%><br>
-배송비 : <%= request.getParameter("ship") %><br>
-총 구매비용(배송비 포함) : <%= request.getParameter("sum") + request.getParameter("ship")%>
-
+%>
 </body>
 </html>
