@@ -1,0 +1,8 @@
+<!-- 단독 실행하면 HTML 을 보여줌 JSP에서 사용하는 변수지정 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+//공용 변수로 사용하기 위해 변수 선언 및 초기화
+String img_path = "./image";
+String file_path = "./file";
+%>
