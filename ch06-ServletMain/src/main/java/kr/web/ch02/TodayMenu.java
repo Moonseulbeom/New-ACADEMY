@@ -18,7 +18,7 @@ public class TodayMenu extends HttpServlet{
 				throws ServletException,IOException{
 		//전송된 데이터 인코딩 처리
 		request.setCharacterEncoding("utf-8");
-		//전송된 데이터 반환
+		//전송된 데이터 반환(여러개의 자료(checkbox)는 배열로 처리)
 		String values[] = 
 				request.getParameterValues("lunch");
 		

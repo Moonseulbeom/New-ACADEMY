@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html> <!-- 리다이렉트 : 옛주소 써도 현주소로 갈수있는것도 리다이렉트라고 한다.-->
+<!DOCTYPE html> 
+<!-- 
+리다이렉트 :
+s09_~주소 확보 후 s10 주소 불러옴_s09는 내용 안불러옴 
++ 옛주소 써도 현주소로 갈수있는것도 리다이렉트라고 한다.
+-->
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,5 +17,5 @@
 </body>
 </html>
 <%
-	response.sendRedirect("s10_responseB.jsp");
+	response.sendRedirect("s10_responseB.jsp"); //호출
 %>
