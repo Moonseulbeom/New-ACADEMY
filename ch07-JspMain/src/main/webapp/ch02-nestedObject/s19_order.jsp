@@ -17,38 +17,40 @@
 총 지불금액 : 13,000원
 --%>
 <%
+	//가격 정보
+	int[] orderArray = {4000,5000,6000};
+	
 	//전송된 데이터 인코딩 처리
 	request.setCharacterEncoding("utf-8");
-
-	//가격 정보
-	HashMap<String,Integer> map = new HashMap<String,Integer>();
-	map.put("짜장면",7000);
-	map.put("짬뽕",8000);
-	map.put("볶음밥",10000);
-
-%>
-짜장면 : <%= request.getParameter("c0") %><br>
-짬뽕 : <%= request.getParameter("c1") %><br>
-볶음밥 : <%= request.getParameter("c2") %><br>
-
-구매내역 :
-<%
-	String[] items = 
-		request.getParameterValues("for");
-	int sum = 0;
-	if(items!=null){//null 체크_자바스크립트가 가끔 꺼져있을수도 있어서 넣어주는게 좋다!
-		for(int i=0;i<items.length;i++){
-			sum += map.get(items[i]);
-			if(i>0) out.print(",");
-%>			
-		<%= items[i] %>
-<%
-		}//end of for
 	
-%>
-	총 지불금액 : <%= String.format("%,d원", sum) %>
-<%				
+	int total = 0;
+	String orderName = "";
+	
+	//짜장면
+	int food_c0 = Integer.parseInt(
+			request.getParameter("food_c0"));
+	//짬뽕
+	int food_c1 = Integer.parseInt(
+			request.getParameter("food_c1"));
+	//볶음밥
+	int food_c2 = Integer.parseInt(
+			request.getParameter("food_c2"));
+	
+	if(food_c0 > 0){
+		total += orderArray[0] * food_c0;
+		orderName += "짜장면" + food_c0 + "개<br>";
+	}
+	if(food_c1 > 0){
+		total += orderArray[1] * food_c1;
+		orderName += "짬뽕" + food_c1 + "개<br>";
+	}
+	if(food_c2 > 0){
+		total += orderArray[2] * food_c2;
+		orderName += "볶음밥" + food_c2 + "개<br>";
 	}
 %>
+[주문 음식]<br>
+<%= orderName %>
+총 지불금액 : <%= String.format("%,d원",total) %>
 </body>
 </html>

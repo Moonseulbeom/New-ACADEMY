@@ -11,29 +11,28 @@
 			document.getElementById('myForm');
 		//이벤트 연결
 		myForm.onsubmit=function(){
-			if(!check('c0','짜장면')){
+			let items = 
+				document.querySelectorAll(
+						'input[type="number"]');
+			for(let i=0;i<items.length;i++){
+				if(items[i].value==''){
+					let label = 
+						document.querySelector(
+							'label[for="'+items[i].id+'"]');//유니크하게 접근해서 레이블의 id에 접근
+					alert(label.textContent 
+							+ '의 수량을 입력하세요!');
+					items[i].value = 0;
+					items[i].focus();
+					return false;//submit 안되게 하려고
+				}
+			}//end of for
+			if(items[0].value==0 &&
+			   items[1].value==0 &&
+			   items[2].value==0){
+				alert('세가지 음식 중 하나는 꼭 주문해야 합니다.');
 				return false;
-			}
-			if(!check('c1','짬뽕')){
-				return false;
-			}
-			if(!check('c2','볶음밥')){
-				return false;
-			}
+			}	
 		};
-		
-		function check(item,name){
-			let check_item = document.getElementById(item);
-			if(check_item.value.trim()==''){
-				alert(name + " 수량 입력 필수");
-				check_item.value = '';
-				check_item.focus();
-				return false;
-			}
-			
-			return true;
-		}
-		
 	};
 </script>
 </head>
