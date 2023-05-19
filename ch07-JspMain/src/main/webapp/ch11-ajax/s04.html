@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery를 이용한 비동기통신 구현</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+/*
+AJAX(Asynchronous Javascript And XML) : 
+자바스크립트와 XML를 이용한 비동기 통신
+ */
+	$(function(){
+		//XML 데이터를 읽어 옴
+		$.ajax({
+			url:'myXML.jsp',
+			success:function(param){
+				$(param).find('person').each(function(){ //배열로 받으니 바로 .each/이벤트가 발생했으니 this 메서드 사용가능
+					let name = '<li>' + $(this).find('name').text() + '</li>';
+					let job = '<li>' + $(this).find('job').text() + '</li>';
+					let age = '<li>' + $(this).find('age').text() + '</li>';
+					
+					$('body').append('<ul>' + name + job + age + '</ul>');
+				});//dataType 생략 가능
+			}
+		});
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
