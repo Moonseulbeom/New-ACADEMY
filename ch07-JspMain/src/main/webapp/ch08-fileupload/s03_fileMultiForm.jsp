@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>파일 다중 업로드</title>
+<!-- parameter name 이 중요함 -->
 </head>
 <body>
 <form action="s04_fileMultiUpload.jsp" 

@@ -38,7 +38,7 @@
 		<div class="align-center">
 			<input type="submit" value="전송">
 			<input type="button" value="목록"
-				onclick="s04_selectTest.jsp"> <!-- 실질적인 대문페이지 -->
+				onclick="location.href='s04_selectTest.jsp'"> <!-- 실질적인 대문페이지 -->
 		</div>
 	</form>
 </div>
