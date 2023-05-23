@@ -127,6 +127,58 @@ public class MemberDAO {//메서드 모아놓는 곳이네 <dao는 모델2로 �
 		return member;//null값을 반환
 	}
 	//회원정보수정
+	public void updateMember(MemberVO member) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			//커넥션풀로부터 커넥션을 할당(JDBC 수행 2단계까지)
+			conn = DBUtil.getconConnection();
+			//SQL문 작성
+			sql = "UPDATE smember SET name=?, passwd=?, email=?, phone=? WHERE num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, member.getPasswd());
+			pstmt.setString(3, member.getEmail());
+			pstmt.setString(4, member.getPhone());
+			pstmt.setInt(5, member.getNum());
+			
+			//SQL문 실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//회원탈퇴(회원정보삭제)
+	public void deleteMember(int num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+
+		try {
+			//커넥션풀로부터 커넥션을 할당(JDBC 수행 2단계까지)
+			conn = DBUtil.getconConnection();
+			//SQL문 작성
+			sql = "DELETE FROM smember WHERE num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, num);
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
 
 }//end of public class MemberDAO

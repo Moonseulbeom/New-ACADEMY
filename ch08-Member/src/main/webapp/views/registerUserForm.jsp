@@ -64,8 +64,7 @@
 		
 		$('#register_form').submit(function(){
 			let items = 
-				document.querySelectorAll(
-					'input[type="text"],input[type="password"],input[type="email"]');
+				document.querySelectorAll('.input-check');
 			for(let i=0;i<items.length;i++){
 				if(items[i].value.trim()==''){
 					let label = document.querySelector(
@@ -96,7 +95,7 @@
 				<label for="id">아이디</label>
 				<input type="text" name="id"
 				   id="id" size="7" maxlength="12"
-				   autocomplete="off">
+				   autocomplete="off" class="input-check">
 				<input type="button" id="confirm_id"
 				                  value="ID중복확인">
 				<span id="id_signed"></span>                     
@@ -104,17 +103,17 @@
 			<li>
 				<label for="name">이름</label>
 				<input type="text" name="name" 
-				   id="name" maxlength="10">
+				   id="name" maxlength="10" class="input-check">
 			</li>
 			<li>
 				<label for="passwd">비밀번호</label>
 				<input type="password" name="passwd" 
-				   id="passwd" maxlength="12">
+				   id="passwd" maxlength="12" class="input-check">
 			</li>
 			<li>
 				<label for="email">이메일</label>
 				<input type="email" name="email" 
-				   id="email" maxlength="50">
+				   id="email" maxlength="50" class="input-check">
 			</li>
 			<li>
 				<label for="phone">전화번호</label>
