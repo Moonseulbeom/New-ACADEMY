@@ -10,7 +10,7 @@
 <body>
 <%
 	String user_id = 
-		(String)session.getAttribute("user_id");
+		(String)session.getAttribute("user_id");//login.jsp의 식별자 : session.setAttribute("user_id", id); 와 같아야함
 %>
 <div class="page-main">
 	<h1>회원관리 메인</h1>
