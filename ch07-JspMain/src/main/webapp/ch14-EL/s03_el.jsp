@@ -19,5 +19,6 @@ page 영역 : ${pageScope.msg1}, ${msg1}<br>
 request 영역 : ${requestScope.msg2}, ${msg2}<br>
 session 영역 : ${sessionScope.msg3}, ${msg3}<br>
 application 영역 : ${applicationScope.msg4}, ${msg4}<br>
+<%-- 4가지의 내장객체 영역에 데이터 이동 가능 --%>
 </body>
 </html>

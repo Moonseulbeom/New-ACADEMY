@@ -22,6 +22,7 @@ ${now}<br>
 <fmt:formatDate value="${now}" 
 	type="both" dateStyle="full" timeStyle="full"/><br>
 <br>
+<%-- 빈도수 多 --%>
 <fmt:formatDate value="${now}" pattern="yyyy년MM월dd일 a hh:mm:ss"/>
 </body>
 </html>

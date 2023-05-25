@@ -17,7 +17,7 @@
 	<input type="submit" value="확인">
 </form>
 <br>
-이름은 <%= request.getParameter("name") %><br>
+이름은 <%= request.getParameter("name") %><br> <%-- 값 없으면 null 처리 --%>
 이름은 ${param.name}<br>
 이름은 ${param["name"]}
 

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>catch 태그</title>
 </head>
+<%-- 일종의 try catch 구문(에러페이지로 안감) --%>
 <body>
 <c:catch var="ex">
 	name 파라미터의 값 = <%= request.getParameter("name") %><br>

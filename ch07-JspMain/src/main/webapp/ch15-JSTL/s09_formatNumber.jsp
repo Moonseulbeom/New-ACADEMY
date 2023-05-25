@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>formatNumber 태그</title>
+<%-- 숫자 다룰떄 --%>
 </head>
 <body>
 숫자 : <%-- 0 3개마다 , 하나씩 붙음 --%>
