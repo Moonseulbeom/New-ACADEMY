@@ -65,7 +65,7 @@ public class BoardDAO {
 		try {
 			//커넥션풀로부터 커넥션을 할당
 			conn = DBUtil.getconConnection();
-			//SQL문 작성
+			//SQL문 작성(최신글이 위로올라오게)
 			sql = "SELECT* FROM mboard ORDER BY num DESC";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -128,8 +128,62 @@ public class BoardDAO {
 		return board;
 	}
 	//글 수정
+	public void update(BoardVO boardVO) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			//커넥션풀로부터 커넥션을 할당(JDBC 수행 2단계까지)
+			conn = DBUtil.getconConnection();
+			//SQL문 작성
+			sql = "UPDATE mboard SET title=?, name=?, "
+					+ "email=?, phone=?, content=?, ip=? WHERE num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setString(1, boardVO.getTitle());
+			pstmt.setString(2, boardVO.getName());
+			pstmt.setString(3, boardVO.getEmail());
+			pstmt.setString(4, boardVO.getPhone());
+			pstmt.setString(5, boardVO.getContent());
+			pstmt.setString(6, boardVO.getIp());
+			pstmt.setInt(7, boardVO.getNum());
+			
+			//SQL문 실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//글 삭제
-	
+	public void delete(int num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+
+		try {
+			//커넥션풀로부터 커넥션을 할당(JDBC 수행 2단계까지)
+			conn = DBUtil.getconConnection();
+			//SQL문 작성
+			sql = "DELETE FROM mboard WHERE num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, num);
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
 	
 	
 }
