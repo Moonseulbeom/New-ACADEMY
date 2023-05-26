@@ -15,6 +15,12 @@
 		<input type="button" value="글쓰기"
 			onclick="location.href='writeForm.do'">
 	</div>
+	<c:if test="${count == 0}">
+	<div class="result-dispaly">
+		표시할 게시물이 없습니다.
+	</div>
+	</c:if>
+	<c:if test="${count > 0}">
 	<table>
 		<tr>
 			<th>글번호</th>
@@ -31,6 +37,10 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<div class="align-center">
+		${page}
+	</div>
+	</c:if>
 </div>
 </body>
 </html>

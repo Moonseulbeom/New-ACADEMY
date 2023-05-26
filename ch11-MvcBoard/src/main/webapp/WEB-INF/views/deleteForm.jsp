@@ -6,6 +6,22 @@
 <meta charset="UTF-8">
 <title>글 삭제</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<script type="text/javascript">
+	window.onload=function(){
+		let myForm = document.getElementById('delete_form');
+		
+		//이벤트 연결
+		myForm.onsubmit=function(){
+			let passwd = document.getElementById('passwd');
+			if(passwd.value.trim()==''){
+				alert('비밀번호를 입력하세요!');
+				passwd.value = '';
+				passwd.focus();
+				return false;
+			}
+		};
+	};
+</script>
 </head>
 <body>
 <div class="page-main">
