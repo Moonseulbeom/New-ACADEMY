@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
 	response.sendRedirect(
-		request.getContextPath()+"/list.do");
+		request.getContextPath()+"/main/main.do");
 %>
