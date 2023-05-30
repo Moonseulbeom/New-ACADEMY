@@ -41,7 +41,7 @@
 			<li>
 				<label for="name">상품명</label>
 				<input type="text" name="name"
-					value="${boardVO.name}"
+					value="${productVO.name}"
 					id="name" size="10" maxlength="10"
 										class="input-check">
 			</li>
