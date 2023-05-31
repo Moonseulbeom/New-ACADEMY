@@ -25,7 +25,7 @@
 	});
 </script>
 </head>
-<body>
+<body><%-- men_num 히든으로 안넘긴 이유가 session에 있어서 --%>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<!-- 내용 시작 -->

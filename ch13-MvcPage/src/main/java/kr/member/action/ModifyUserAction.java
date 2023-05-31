@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 
 public class ModifyUserAction implements Action {
@@ -30,6 +31,9 @@ public class ModifyUserAction implements Action {
 		member.setAddress1(request.getParameter("address1"));
 		member.setAddress2(request.getParameter("address2"));
 
+		MemberDAO dao = MemberDAO.getInstance();
+		dao.updateMember(member);
+		
 		//JSP 경로 반환
 		return "/WEB-INF/views/member/modifyUser.jsp";
 	}
