@@ -115,7 +115,8 @@ public class MemberDAO {
 		}
 		return member;
 	}
-	//회원상세 정보
+	//회원상세 정보(MY페이지)
+	
 	//회원정보 수정
 	//비밀번호 수정
 	//프로필 사진 수정
