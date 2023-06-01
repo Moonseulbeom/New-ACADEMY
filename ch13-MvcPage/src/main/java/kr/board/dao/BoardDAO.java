@@ -129,6 +129,50 @@ public class BoardDAO {
 		return list;
 	}
 	//글 상세
+	public BoardVO getBoard(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardVO board = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT * FROM zboard b "
+					+ "JOIN zmember m USING(mem_num) "
+					+ "JOIN zmember_detail d "
+					+ "USING(mem_num) WHERE b.board_num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터를 바인딩
+			pstmt.setInt(1, board_num);
+			//SQL문을 실행해서 결과행을 ResultSet에 담음
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				board = new BoardVO();
+				board.setBoard_num(rs.getInt("board_num"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setHit(rs.getInt("hit"));
+				board.setReg_date(rs.getDate("reg_date"));
+				board.setModify_date(rs.getDate("modify_date"));
+				board.setFilename(rs.getString("filename"));
+				board.setMem_num(rs.getInt("mem_num"));
+				board.setId(rs.getString("id"));
+				board.setPhoto(rs.getString("photo"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return board;
+	}
+	
 	//조회수 증가
 	//파일 삭제
 	//글 수정
