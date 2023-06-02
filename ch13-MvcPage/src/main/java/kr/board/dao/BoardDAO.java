@@ -222,7 +222,87 @@ public class BoardDAO {
 		
 	}
 	//글 수정
+	public void updateBoard(BoardVO board) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		String sub_sql = ""; //대입연산자나 누적으로 쓸수도 있음
+		int cnt = 0; //?에 번호를 사용하기 위해 변수지정
+		
+		try {
+			//커넥션 풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			
+			if(board.getFilename()!=null) {
+				//파일을 업로드한 경우
+				sub_sql += ",filename=?";
+			}
+			
+			sql = "UPDATE zboard SET title=?,"
+					+ "content=?,modify_date=SYSDATE" 
+					+ sub_sql + ",ip=? WHERE board_num=?";
+			
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setString(++cnt, board.getTitle());
+			pstmt.setString(++cnt, board.getContent());
+			if(board.getFilename()!=null) {
+				pstmt.setString(++cnt, board.getFilename());
+			}
+			pstmt.setString(++cnt, board.getIp());
+			pstmt.setInt(++cnt, board.getBoard_num());
+			
+			//SQL문 실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//글 삭제
+	public void deleteBoard(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//오토커밋 해제
+			conn.setAutoCommit(false);
+			
+			//좋아요 삭제
+			
+			//댓글 삭제
+			
+			//부모글 삭제
+			sql = "DELETE FROM zboard WHERE board_num=?";
+			//PreparedStatement 객체 생성
+			pstmt3 = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt3.setInt(1, board_num);
+			//SQL문 실행
+			pstmt3.executeUpdate();
+			
+			//예외 발생 없이 정상적으로 SQL문 실행
+			conn.commit();
+			
+		}catch(Exception e) {
+			//하나라도 SQL문 실패하면 롤백
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt3, null);
+			DBUtil.executeClose(null, pstmt2, null);
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	
-	
-}
+}//end of p.c

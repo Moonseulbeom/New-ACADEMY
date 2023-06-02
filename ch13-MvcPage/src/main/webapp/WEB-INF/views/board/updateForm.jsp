@@ -35,7 +35,7 @@
 		<form id="update_form" action="update.do" 
 			method="post" 
 			enctype="multipart/form-data">
-			<input type="hidden" name="board_num" value=""${board.board_num}>
+			<input type="hidden" name="board_num" value="${board.board_num}">
 			<ul>
 				<li>
 					<label for="title">제목</label>
