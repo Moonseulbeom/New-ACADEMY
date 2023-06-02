@@ -169,6 +169,23 @@
 				onclick="location.href='deleteUserForm.do'">
 			</h3>
 		</div><%-- end of .mypage- --%>
+		<div class="mypage-div">
+			<h3>신규 게시물</h3>
+			<table>
+				<tr>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>등록일</th>
+				</tr>
+				<c:forEach var="board" items="${boardList}">
+				<tr>
+					<td><a href="${pageContext.request.contextPath}/board/detail.do?board_num=${board.board_num}" target="_blank">${fn:substring(board.title,0,12)}</a></td>
+					<td>${board.id}</td>
+					<td>${board.reg_date}</td>
+				</tr>
+				</c:forEach>
+			</table>
+		</div><%-- end of .mypage- --%>
 		<div class="mypage-end"></div>
 	</div>
 	<!-- 내용 끝 -->

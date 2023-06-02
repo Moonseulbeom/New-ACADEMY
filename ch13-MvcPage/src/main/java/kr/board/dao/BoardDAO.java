@@ -54,17 +54,27 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		String sub_sql = "";
+		String sub_sql = ""; //기본값을 비워놔야됨
 		int count = 0;
 		
 		try {
 			//커넥션 풀로부터 커넥션을 할당받음
 			conn = DBUtil.getConnection();
+			
+			if(keyword != null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql += "WHERE b.title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql += "WHERE m.id LIKE ?";
+				else if(keyfield.equals("3")) sub_sql += "WHERE b.content LIKE ?";
+			}
+			
 			//SQL문 작성
 			sql = "SELECT COUNT(*) FROM zboard b "
-					+ "JOIN zmember m USING(mem_num)";
+					+ "JOIN zmember m USING(mem_num) " + sub_sql;
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
+			if(keyword != null && !"".equals(keyword)) {
+				pstmt.setString(1, "%" + keyword + "%");
+			}
 			
 			//SQL 실행
 			rs = pstmt.executeQuery();
@@ -89,23 +99,34 @@ public class BoardDAO {
 		ResultSet rs = null;
 		List<BoardVO> list = null;
 		String sql = null;
-		String sub_sql = "";
+		String sub_sql = ""; //기본값을 비워놔야됨
+		int cnt = 0;
 		
 		try {
 			//커넥션 풀로부터 커넥션을 할당받음
 			conn = DBUtil.getConnection();
+			
+			if(keyword != null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql += "WHERE b.title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql += "WHERE m.id LIKE ?";
+				else if(keyfield.equals("3")) sub_sql += "WHERE b.content LIKE ?";
+			}
+			
 			//SQL문 작성
 			sql = "SELECT * FROM (SELECT a.*, "
 					+ "rownum rnum FROM (SELECT * "
 					+ "FROM zboard b JOIN zmember m "
-					+ "USING(mem_num) ORDER BY "
+					+ "USING(mem_num) " + sub_sql + " ORDER BY "
 					+ "b.board_num DESC)a) "
 					+ "WHERE rnum>=? AND rnum<=?";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			if(keyword!=null && !"".equals(keyword)) {
+				pstmt.setString(++cnt, "%" + keyword + "%");
+			}
+			pstmt.setInt(++cnt, start);
+			pstmt.setInt(++cnt, end);
 
 			//SQL문 실행
 			rs = pstmt.executeQuery();
