@@ -43,6 +43,32 @@
 		<p>
 			${board.content}
 		</p>
+		<hr size="1" noshade="noshade" width="100%">
+		<ul class="detail-sub">
+		   <li>
+		      <c:if test="${ !empty board.modify_date }">
+		         최근 수정일 : ${ board.modify_date }
+		      </c:if>
+		         작성일 : ${ board.reg_date }
+		         <%-- 로그인 한 회원번호와 작성자 회원번호가 일치해야 수정, 삭제 가능 --%>
+		         <c:if test="${ user_num == board.mem_num }">
+		            <input type="button" value="수정" 
+		            onclick="location.href='updateForm.do?board_num=${ board.board_num}'">
+		            <input type="button" value="삭제" id="delete_btn">
+		            <script type="text/javascript">
+		               let delete_btn =  document.getElementById('delete_btn');
+		               //이벤트 연결
+		               delete_btn.onclick=function(){
+		                  let choice = confirm('삭제하겠습니까?');
+		                  if(choice){
+		                     location.replace('delete.do?board_num=${board.board_num}');
+		                  }
+		               }
+		               
+		            </script>
+		         </c:if>
+		   </li>
+		</ul>
 	</div>
 	<!-- 내용 끝 -->
 </div>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.board.vo.BoardVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class BoardDAO {
 	//싱글턴 패턴
@@ -112,7 +113,7 @@ public class BoardDAO {
 			while(rs.next()) {
 				BoardVO board = new BoardVO();
 				board.setBoard_num(rs.getInt("board_num"));
-				board.setTitle(rs.getString("title"));
+				board.setTitle(StringUtil.useNoHtml(rs.getString("title")));
 				board.setHit(rs.getInt("hit"));
 				board.setReg_date(rs.getDate("reg_date"));
 				board.setId(rs.getString("id"));
@@ -174,7 +175,52 @@ public class BoardDAO {
 	}
 	
 	//조회수 증가
+	public void updateReadCount(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션 풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql  = "UPDATE zboard SET hit = hit + 1 WHERE board_num = ? ";
+			//PreparedStatement 객체 생성
+		    pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+		    pstmt.setInt(1, board_num);
+			//SQL문 실행
+		    pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//파일 삭제
+	public void deleteFile(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션 풀로부터 커넥션을 할당
+			 conn = DBUtil.getConnection();
+			 //SQL문 작성
+			 sql  = "UPDATE zboard SET filename='' WHERE board_num = ? ";
+			 //PreparedStatement 객체 생성
+			 pstmt = conn.prepareStatement(sql);
+			 //?에 데이터 바인딩
+			 pstmt.setInt(1, board_num);
+			 //SQL문 실행
+			 pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
 	//글 수정
 	//글 삭제
 	
