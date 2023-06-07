@@ -56,8 +56,21 @@ create table zboard_fav(
 
 create sequence zboardfav_seq;
 
+--댓글
+create table zboard_reply(
+ re_num number,
+ re_content varchar2(900) not null,
+ re_date date default sysdate not null,
+ re_modifydate date,
+ re_ip varchar2(40) not null,
+ board_num number not null, -- 부모글번호
+ mem_num number not null,
+ constraint zreply_pk primary key (re_num),
+ constraint zreply_fk foreign key (board_num) references zboard (board_num),
+ constraint zreply_fk2 foreign key (mem_num) references zmember (mem_num)
+);
 
-
+create sequence zreply_seq;
 
 
 

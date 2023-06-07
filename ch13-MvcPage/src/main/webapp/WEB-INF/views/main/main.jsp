@@ -21,7 +21,6 @@
 					<td>${board.id}</td>
 					<td>${board.reg_date}</td>
 					<td>${board.hit}</td>
-					<td>${board.id}</td>
 				</tr>
 			</c:forEach>
 		</table>
