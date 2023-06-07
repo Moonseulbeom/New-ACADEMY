@@ -46,6 +46,14 @@
 		<hr size="1" noshade="noshade" width="100%">
 		<ul class="detail-sub">
 		   <li>
+		      <%-- 좋아요 --%>
+		      <img id="output_fav" 
+		      	data-num="${board.board_num}"
+		      	src="${pageContext.request.contextPath}/images/fav01.gif" width="50">
+		      	좋아요
+		      	<span id="output_fcount"></span>
+		   </li>
+		   <li>
 		      <c:if test="${ !empty board.modify_date }">
 		         최근 수정일 : ${ board.modify_date }
 		      </c:if>

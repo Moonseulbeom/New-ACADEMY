@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.BoardFavVO;
 import kr.board.vo.BoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
@@ -164,7 +165,7 @@ public class BoardDAO {
 			//SQL문 작성
 			sql = "SELECT * FROM zboard b "
 					+ "JOIN zmember m USING(mem_num) "
-					+ "JOIN zmember_detail d "
+					+ "LEFT OUTER JOIN zmember_detail d "
 					+ "USING(mem_num) WHERE b.board_num=?";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -325,5 +326,94 @@ public class BoardDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
+	
+	//좋아요 등록
+	public void insertFav(BoardFavVO favVO) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "INSERT INTO zboard_fav ("
+					+ "fav_num,board_num,mem_num)"
+					+ "VALUES (zboardfav_seq.nextval,"
+					+ "?,?)";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, favVO.getBoard_num());
+			pstmt.setInt(2, favVO.getMem_num());
+			//sql문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//좋아요 개수
+	public int selectFavCount(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		
+		return count;
+	}
+	//회원번호와 게시물 번호를 이용한 좋아요 정보
+	//(회원이 게시물을 호출할 때 좋아요 선택 여부 표시)
+	public BoardFavVO selectFav(BoardFavVO favVO) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardFavVO fav = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT * FROM zboard_fav WHERE board_num=? AND mem_num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, favVO.getBoard_num());
+			pstmt.setInt(2, favVO.getMem_num());
+			//SQL문 실행
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				fav = new BoardFavVO();
+				fav.setFav_num(rs.getInt("fav_num"));
+				fav.setBoard_num(rs.getInt("board_num"));
+				fav.setMem_num(rs.getInt("mem_num"));
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return fav;
+	}
+	//좋아요 삭제
+	//내가 선택한 좋아요 목록
+	
+	
 	
 }//end of p.c

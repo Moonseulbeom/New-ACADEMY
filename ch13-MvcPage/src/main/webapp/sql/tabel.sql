@@ -44,8 +44,17 @@ create table zboard(
 );
 create sequence zboard_seq;
 
+--좋아요
+create table zboard_fav(
+ fav_num number,
+ board_num number not null,
+ mem_num number not null,
+ constraint zboard_fav_pk primary key (fav_num),
+ constraint zboard_fav_fk1 foreign key (board_num) references zboard (board_num),
+ constraint zboard_fav_fk2 foreign key (mem_num) references zmember (mem_num)
+);
 
-
+create sequence zboardfav_seq;
 
 
 
