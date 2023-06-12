@@ -72,7 +72,22 @@ create table zboard_reply(
 
 create sequence zreply_seq;
 
+--상품
+create table zitem(
+ item_num number,
+ name varchar2(30) not null,
+ price number(8) not null,
+ quantity number(5) not null,
+ photo1 varchar2(34) not null,
+ photo2 varchar2(34) not null,
+ detail clob not null,
+ reg_date date default sysdate not null,
+ modify_date date,
+ status number(1) not null, -- 판매 가능 여부
+ constraint zitem_pk primary key (item_num)
+);
 
+create sequence zitem_seq;
 
 
 
