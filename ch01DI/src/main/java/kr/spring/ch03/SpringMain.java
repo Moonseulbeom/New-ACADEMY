@@ -1,4 +1,4 @@
-package kr.spring.ch01;
+package kr.spring.ch03;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,10 +14,12 @@ public class SpringMain {
 						"applicationContext.xml");
 		
 		//객체를 컨테이너로부터 읽어들임
-		MessageBean messageBean = (MessageBean)context.getBean("messageBean");
-		messageBean.sayHello("홍길동");
+		OperatorBean bean = (OperatorBean)context.getBean("operatorBean");
+		int result = bean.add(10,20);
 		
-		//어플리케이션 종료시 컨테이너에 존재하는 모든 빈(객체)를 종료 - 자원정리
+		System.out.println("결과 : " + result);
+		
+		//어플리케이션 종료시 컨테이너에 존재하는 모든 빈(객체)를 종료
 		context.close();
 	}
 }

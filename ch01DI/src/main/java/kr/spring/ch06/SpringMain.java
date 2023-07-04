@@ -1,4 +1,4 @@
-package kr.spring.ch01;
+package kr.spring.ch06;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,12 +12,12 @@ public class SpringMain {
 		AbstractApplicationContext context = 
 				new ClassPathXmlApplicationContext(
 						"applicationContext.xml");
+		//DI 생성자 전달 방식 생성한 객체 호출
+		SystemMonitor monitor = 
+				(SystemMonitor)context.getBean("monitor");
+		System.out.println(monitor);
 		
-		//객체를 컨테이너로부터 읽어들임
-		MessageBean messageBean = (MessageBean)context.getBean("messageBean");
-		messageBean.sayHello("홍길동");
-		
-		//어플리케이션 종료시 컨테이너에 존재하는 모든 빈(객체)를 종료 - 자원정리
+		//어플리케이션 종료시 컨테이너에 존재하는 모든 빈(객체)를 종료
 		context.close();
 	}
 }

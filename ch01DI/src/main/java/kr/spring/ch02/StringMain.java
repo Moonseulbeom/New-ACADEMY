@@ -1,9 +1,9 @@
-package kr.spring.ch01;
+package kr.spring.ch02;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SpringMain {
+public class StringMain {
 	public static void main(String[] args) {
 		/*
 		 * applicationContext.xml 설정파일을 읽어들여
@@ -14,10 +14,11 @@ public class SpringMain {
 						"applicationContext.xml");
 		
 		//객체를 컨테이너로부터 읽어들임
-		MessageBean messageBean = (MessageBean)context.getBean("messageBean");
-		messageBean.sayHello("홍길동");
+		StudentBean studentBean = (StudentBean)context.getBean("studentBean");
+		studentBean.study("국어");
 		
-		//어플리케이션 종료시 컨테이너에 존재하는 모든 빈(객체)를 종료 - 자원정리
+		//어플리케이션 종료시 컨테이너에 존재하는 모든 빈(객체)를 종료
 		context.close();
+		
 	}
 }
