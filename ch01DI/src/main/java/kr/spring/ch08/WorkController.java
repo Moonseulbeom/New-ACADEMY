@@ -12,7 +12,10 @@ public class WorkController {
 		this.email = email;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "WorkController [periodTime=" + periodTime + ", email=" + email + "]";
+	}
 	
 	
 	
