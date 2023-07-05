@@ -80,7 +80,7 @@
 		</property>
 	</bean>
 	
-	<!-- Properties 타입 프로퍼티 설정 -->
+	<!-- Properties 타입 프로퍼티 설정/제일 많이 씀-->
 	<bean name="bookClient" class="kr.spring.ch13.BookClient">
 		<property name="prop">
 			<!-- Properties 타입 객체 생성 -->
