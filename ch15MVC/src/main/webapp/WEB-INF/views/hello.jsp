@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Spring MVC</title>
+<title>인사</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/hello.do">HelloController</a>
+인사말 : <strong>${greeting}</strong>
 </body>
 </html>
