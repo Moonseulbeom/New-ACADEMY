@@ -33,7 +33,8 @@
 	<!-- 
 	클라이언트 -> 필터(인코딩 처리) -> 서블릿 
 	-->
-	
+
+	<!-- 인코딩 처리 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
